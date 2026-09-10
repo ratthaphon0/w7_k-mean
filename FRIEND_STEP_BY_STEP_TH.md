@@ -63,9 +63,11 @@ xdg-open outputs/<run_id>/report.html
 ## 7. เมื่อต้องเปลี่ยน API หรือข้อมูลต้นทาง
 
 1. แก้ source ใน `sources.example.json`
-2. ตรวจ JSON response ว่ามี `id`, `name`, `price`, `stock`
-3. รัน `./scripts/run_demo.sh --mode live --k 3` และตรวจ report
-4. เมื่อยืนยันว่า response ถูกต้อง ค่อยรัน `.venv/bin/python scripts/refresh_snapshot.py`
-5. รัน test ด้วย `.venv/bin/python -m unittest discover -s tests -v`
+2. ถ้า source เป็น Supabase ให้ copy `.env.example` เป็น `.env` และใส่ Publishable/anon key; ห้ามใส่ service-role key
+3. โหลด environment ด้วย `set -a; . ./.env; set +a`
+4. ตรวจ JSON response ว่ามี `id`, `name`, `price`, `stock`
+5. รัน `./scripts/run_demo.sh --mode live --k 3` และตรวจ report
+6. เมื่อยืนยันว่า response ถูกต้อง ค่อยรัน `.venv/bin/python scripts/refresh_snapshot.py`
+7. รัน test ด้วย `.venv/bin/python -m unittest discover -s tests -v`
 
 หาก API ใหม่เป็น Supabase/Firebase ให้ดู [EXTERNAL_CLOUD_SOURCE_SETUP.md](EXTERNAL_CLOUD_SOURCE_SETUP.md) ก่อนเปลี่ยน source จริง

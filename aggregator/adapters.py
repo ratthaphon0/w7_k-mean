@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import time
 from typing import Any
 
@@ -21,9 +22,15 @@ def _safe_error(exc: Exception) -> str:
     return message[:240] or exc.__class__.__name__
 
 
-def _get_json(session: requests.Session, url: str, timeout: float) -> tuple[Any, int]:
+def _get_json(
+    session: requests.Session,
+    url: str,
+    timeout: float,
+    headers: dict[str, str] | None = None,
+) -> tuple[Any, int]:
     try:
-        response = session.get(url, timeout=(timeout, timeout), headers={"Accept": "application/json"})
+        request_headers = {"Accept": "application/json", **(headers or {})}
+        response = session.get(url, timeout=(timeout, timeout), headers=request_headers)
     except requests.RequestException as exc:
         raise SourceFetchError(_safe_error(exc)) from exc
     if response.status_code >= 400:
@@ -65,7 +72,25 @@ def fetch_source(source: dict[str, Any], *, timeout: float = 8.0, session: reque
     seen_keys: set[str] = set()
     total: int | None = None
     try:
-        if adapter in {"appashif_data_meta", "data_meta"}:
+        if adapter == "supabase_rest_array":
+            key_env = source.get("api_key_env")
+            if not isinstance(key_env, str) or not key_env:
+                raise SourceFetchError("Supabase source requires api_key_env")
+            api_key = os.environ.get(key_env, "").strip()
+            if not api_key:
+                raise SourceFetchError(f"missing Supabase API key in environment variable: {key_env}")
+            payload, status = _get_json(
+                session,
+                url,
+                timeout,
+                headers={"apikey": api_key, "Authorization": f"Bearer {api_key}"},
+            )
+            if not isinstance(payload, list) or not all(isinstance(row, dict) for row in payload):
+                raise SourceFetchError("Supabase adapter expected a JSON array", status=status)
+            rows = payload
+            pages = 1
+            total = len(rows)
+        elif adapter in {"appashif_data_meta", "data_meta"}:
             page = 1
             while True:
                 page_url = url + ("&" if "?" in url else "?") + f"page={page}&limit=100"

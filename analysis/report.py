@@ -10,7 +10,7 @@ from typing import Any
 ROLES = {
     "std6730202734": "TA",
     "demo-shop-b": "Simulated group B",
-    "demo-shop-c": "Simulated group C",
+    "demo-shop-c": "Supabase product catalog",
 }
 
 
@@ -54,7 +54,7 @@ def write_report(result: dict[str, Any], out_dir: str | Path) -> dict[str, str]:
     )
     synthetic_count = sum(bool(p.get("price_is_synthetic")) for p in products)
     warning = (
-        f"{synthetic_count} rows from the two simulated-group APIs are classroom data. "
+        f"{synthetic_count} rows are sample catalog data. "
         "The HTTP calls and K-means run are live; only the TA catalog is original data."
     )
     report = out / "report.html"

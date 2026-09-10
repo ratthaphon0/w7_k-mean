@@ -19,9 +19,11 @@
     },
     {
       "source_id": "demo-shop-c",
-      "role": "simulated_group",
-      "url": "http://119.59.102.161:3121/api/products",
-      "adapter": "data_meta",
+      "role": "external_cloud_database",
+      "url": "https://vlkebenfrpkbblxncdcp.supabase.co/rest/v1/products?select=id,name,description,category,price,stock,price_is_synthetic&order=id.asc",
+      "adapter": "supabase_rest_array",
+      "api_key_env": "SUPABASE_DEMO_SHOP_C_API_KEY",
+      "data_origin": "supabase_sample_catalog",
       "is_mock": true
     }
   ],

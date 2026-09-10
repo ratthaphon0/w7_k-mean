@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import json
+import os
 import unittest
 from pathlib import Path
+from unittest.mock import Mock, patch
 
 from aggregator.app import collect
+from aggregator.adapters import fetch_source
 from aggregator.validation import normalize_rows
 from analysis.clustering import TrainingBlocked, fit_snapshot
 from cloud_api.server import load_fixture
@@ -27,6 +30,24 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(accepted[0]["price"], 450)
         self.assertEqual(accepted[0]["price_source"], "api")
         self.assertTrue(accepted[0]["price_is_synthetic"])
+
+    def test_supabase_array_adapter_reads_key_only_from_environment(self):
+        response = Mock(status_code=200, content=b'[{"id":"C-001","name":"Notebook","price":300,"stock":65}]')
+        response.json.return_value = [{"id": "C-001", "name": "Notebook", "price": 300, "stock": 65}]
+        session = Mock()
+        session.get.return_value = response
+        source = {
+            "source_id": "demo-shop-c",
+            "url": "https://example.supabase.co/rest/v1/products?select=*",
+            "adapter": "supabase_rest_array",
+            "api_key_env": "TEST_SUPABASE_KEY",
+        }
+        with patch.dict(os.environ, {"TEST_SUPABASE_KEY": "public-test-key"}, clear=False):
+            result = fetch_source(source, session=session)
+        self.assertEqual(result["fetched"], 1)
+        self.assertEqual(result["rows"][0]["id"], "C-001")
+        self.assertEqual(session.get.call_args.kwargs["headers"]["apikey"], "public-test-key")
+        self.assertEqual(session.get.call_args.kwargs["headers"]["Authorization"], "Bearer public-test-key")
 
     def test_invalid_stock_is_quarantined(self):
         accepted, rejected = normalize_rows([{"id": "x", "name": "x", "price": 10, "stock": -1}], self.sources["sources"][0])

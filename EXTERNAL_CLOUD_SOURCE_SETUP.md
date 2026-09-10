@@ -8,9 +8,18 @@
 2. สร้าง columns: `id` (text, primary key), `name` (text), `description` (text), `category` (text), `price` (numeric), `stock` (int8), `price_is_synthetic` (boolean). จะเก็บ `created_at` (timestamp, default `now()`) เพิ่มก็ได้.
 3. Import สินค้า 4 รายการจาก `data/demo-shop-c.supabase.csv`.
 4. เปิด Row Level Security และสร้าง policy ที่อนุญาตเฉพาะ `SELECT` สำหรับ `anon`; ห้ามเปิด insert, update หรือ delete.
-5. ใช้ REST endpoint ของ table เช่น `https://<project-ref>.supabase.co/rest/v1/products?select=*`.
-6. เก็บ Supabase anon key ไว้นอก repository แล้วให้ runtime อ่านจาก environment variable. ห้าม commit key หรือ service-role key.
-7. เปลี่ยน `demo-shop-c` ใน `sources.example.json`, รัน live, ตรวจ report, แล้ว refresh snapshot.
+5. REST endpoint ที่ project นี้ใช้คือ `https://vlkebenfrpkbblxncdcp.supabase.co/rest/v1/products`. Project configuration จะเรียก `select` และ `order` ให้เอง.
+6. Copy `.env.example` เป็น `.env` แล้วใส่ค่า Publishable key (หรือ anon key) ใน `SUPABASE_DEMO_SHOP_C_API_KEY`. ห้าม commit `.env` และห้ามใช้ service-role key.
+7. โหลด environment แล้วรัน live:
+
+   ```sh
+   set -a
+   . ./.env
+   set +a
+   ./scripts/run_demo.sh --mode live --k 3
+   ```
+
+8. เมื่อ live run ผ่าน ค่อยรัน `.venv/bin/python scripts/refresh_snapshot.py` เพื่ออัปเดต snapshot.
 
 ## Firebase Realtime Database
 

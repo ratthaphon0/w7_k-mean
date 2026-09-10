@@ -38,7 +38,7 @@ def main() -> None:
             "observed_url": source["url"],
             "http_status": response["status"],
             "adapter": source["adapter"],
-            "data_origin": "synthetic_classroom_demo" if source.get("is_mock") else "ta_api",
+            "data_origin": source.get("data_origin", "sample_catalog" if source.get("is_mock") else "ta_api"),
             "products": rows,
         })
     payload = {
