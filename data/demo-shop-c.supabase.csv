@@ -1,0 +1,5 @@
+id,name,description,category,price,stock,price_is_synthetic
+C-001,Study Notebook Set,Set of ruled notebooks for class notes and planning.,Stationery,300,65,true
+C-002,LED Desk Lamp,Adjustable desk lamp with three brightness levels.,Lighting,590,55,true
+C-003,Bluetooth Speaker,Portable speaker with a twelve-hour battery.,Audio,1290,24,true
+C-004,Ergonomic Office Chair,Adjustable mesh chair with lumbar support.,Furniture,3290,5,true

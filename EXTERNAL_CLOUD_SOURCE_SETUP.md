@@ -5,11 +5,12 @@
 ## ทางเลือกที่แนะนำ: Supabase
 
 1. สร้าง Supabase project และ table `products`.
-2. เพิ่มสินค้า 4 รายการ โดยใช้ columns: `id`, `name`, `description`, `category`, `price`, `stock`.
-3. เปิด Row Level Security และสร้าง policy ที่อนุญาตเฉพาะ `SELECT` สำหรับ `anon`; ห้ามเปิด insert, update หรือ delete.
-4. ใช้ REST endpoint ของ table เช่น `https://<project-ref>.supabase.co/rest/v1/products?select=*`.
-5. เก็บ Supabase anon key ไว้นอก repository แล้วให้ runtime อ่านจาก environment variable. ห้าม commit key หรือ service-role key.
-6. เปลี่ยน `demo-shop-c` ใน `sources.example.json`, รัน live, ตรวจ report, แล้ว refresh snapshot.
+2. สร้าง columns: `id` (text, primary key), `name` (text), `description` (text), `category` (text), `price` (numeric), `stock` (int8), `price_is_synthetic` (boolean). จะเก็บ `created_at` (timestamp, default `now()`) เพิ่มก็ได้.
+3. Import สินค้า 4 รายการจาก `data/demo-shop-c.supabase.csv`.
+4. เปิด Row Level Security และสร้าง policy ที่อนุญาตเฉพาะ `SELECT` สำหรับ `anon`; ห้ามเปิด insert, update หรือ delete.
+5. ใช้ REST endpoint ของ table เช่น `https://<project-ref>.supabase.co/rest/v1/products?select=*`.
+6. เก็บ Supabase anon key ไว้นอก repository แล้วให้ runtime อ่านจาก environment variable. ห้าม commit key หรือ service-role key.
+7. เปลี่ยน `demo-shop-c` ใน `sources.example.json`, รัน live, ตรวจ report, แล้ว refresh snapshot.
 
 ## Firebase Realtime Database
 
