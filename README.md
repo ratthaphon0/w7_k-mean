@@ -98,6 +98,4 @@ IMPLEMENTATION_HANDOFF.md   specification และ acceptance criteria
 
 ## ความหมายของ “API จริง”
 
-พอร์ต 3120/3121 เป็น process จริงบน VPS และถูกเรียกผ่านเครือข่ายจริง แต่ catalog ในสอง API นั้นสร้างเพื่อการสอนและมี `data_origin: "synthetic_classroom_demo"` กับ `price_is_synthetic: true` ต้องไม่เรียกว่าเป็นยอดขายหรือข้อมูลร้านจริง ส่วน `stock` คือจำนวนสินค้าคงเหลือ ไม่ใช่ยอดขายรายเดือน
-
 K-means เรียนรู้สมาชิกจากระยะห่างของเวกเตอร์หลัง `StandardScaler`; source, category และ product ID ใช้แสดง provenance เท่านั้น ไม่ได้ใช้เป็น feature และไม่มี SQL `GROUP BY` หรือ if/else กำหนด cluster
