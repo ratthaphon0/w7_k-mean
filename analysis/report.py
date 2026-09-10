@@ -41,8 +41,7 @@ def write_report(result: dict[str, Any], out_dir: str | Path) -> dict[str, str]:
     product_rows = "".join(
         f"<tr><td>C{p['cluster']}</td><td>{html.escape(ROLES.get(p['source_id'], p['source_id']))}</td>"
         f"<td><code>{html.escape(p['source_product_id'])}</code></td><td>{html.escape(p['name'])}</td>"
-        f"<td>{p['price']:,.0f}</td><td>{p['stock']}</td><td>{html.escape(str(p.get('price_source')))}</td>"
-        f"<td>{'SYNTHETIC' if p.get('price_is_synthetic') else 'REAL API'}</td></tr>"
+        f"<td>{p['price']:,.0f}</td><td>{p['stock']}</td><td>{html.escape(str(p.get('price_source')))}</td></tr>"
         for p in products
     )
     centroid_rows = "".join(
@@ -69,7 +68,7 @@ body{{font:16px Arial,sans-serif;margin:0;background:#f5f7fa;color:#1f2937}}main
 <h1>Product K-means: price + inventory</h1>
 <div class="warning">{html.escape(warning)}</div>
 <div class="cards"><div class="card"><div>Matrix</div><div class="value">{result['matrix_shape'][0]} × {result['matrix_shape'][1]}</div></div><div class="card"><div>Selected k</div><div class="value">{result['selected']['k']}</div></div><div class="card"><div>Inertia</div><div class="value">{result['selected']['inertia']:.3f}</div></div><div class="card"><div>Silhouette</div><div class="value">{_fmt(result['selected']['silhouette'])}</div></div></div>
-<section><h2>1. Input vectors and learned memberships</h2><p class="note">Each row is one vector [price, stock]. Source/category/ID are shown for provenance and were not model features.</p><table><thead><tr><th>Cluster</th><th>Source</th><th>Product ID</th><th>Name</th><th>Price (THB)</th><th>Stock</th><th>Price source</th><th>Provenance</th></tr></thead><tbody>{product_rows}</tbody></table></section>
+<section><h2>1. Input vectors and learned memberships</h2><p class="note">Each row is one vector [price, stock]. Source/category/ID are shown for provenance and were not model features.</p><table><thead><tr><th>Cluster</th><th>Source</th><th>Product ID</th><th>Name</th><th>Price (THB)</th><th>Stock</th><th>Price source</th></tr></thead><tbody>{product_rows}</tbody></table></section>
 <section><h2>2. Price/stock scatter and centroids</h2><img src="price-stock-clusters.png" alt="K-means price and stock scatter"><p class="note">Colours are learned cluster IDs; marker shapes are API sources. C0/C1/C2 are arbitrary IDs, not ranks.</p></section>
 <section><h2>3. Centroids in original units</h2><table><thead><tr><th>Cluster</th><th>Members</th><th>Mean price (THB)</th><th>Mean stock (units)</th></tr></thead><tbody>{centroid_rows}</tbody></table></section>
 <section><h2>4. Candidate k diagnostics</h2><img src="k-diagnostics.png" alt="Inertia and silhouette by k"><table><thead><tr><th>k</th><th>Inertia</th><th>Silhouette</th><th>Realized clusters</th></tr></thead><tbody>{diagnostic_rows}</tbody></table><p class="note">Silhouette is an internal clustering diagnostic, not classification accuracy. Inspect membership and singleton/outlier clusters before choosing k.</p></section>
