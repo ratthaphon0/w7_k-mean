@@ -1,0 +1,172 @@
+{
+  "mode": "snapshot",
+  "captured_at": "2026-09-09T18:25:49.361702+00:00",
+  "normalization": "Explicit allowlisted field mapping; no imputation; price and stock come from each API",
+  "features": [
+    "price",
+    "stock"
+  ],
+  "counts": {
+    "ta": 4,
+    "simulated": 8,
+    "total": 12
+  },
+  "products": [
+    {
+      "product_key": "std6730202734:acid-grid-tee",
+      "source_id": "std6730202734",
+      "source_product_id": "acid-grid-tee",
+      "is_mock": false,
+      "name": "Acid Grid Tee",
+      "description": "Acid-wash cotton tee with a relaxed streetwear fit.",
+      "category": "Oversized T-shirt",
+      "price": 890.0,
+      "stock": 18,
+      "price_source": "api",
+      "price_is_synthetic": false
+    },
+    {
+      "product_key": "std6730202734:pixel-rush-hoodie",
+      "source_id": "std6730202734",
+      "source_product_id": "pixel-rush-hoodie",
+      "is_mock": false,
+      "name": "Pixel Rush Hoodie",
+      "description": "Warm heavyweight hoodie with an oversized silhouette.",
+      "category": "Heavyweight Hoodie",
+      "price": 1890.0,
+      "stock": 9,
+      "price_source": "api",
+      "price_is_synthetic": false
+    },
+    {
+      "product_key": "std6730202734:signal-cargo",
+      "source_id": "std6730202734",
+      "source_product_id": "signal-cargo",
+      "is_mock": false,
+      "name": "Signal Cargo",
+      "description": "Multi-pocket cargo pants built for everyday movement.",
+      "category": "Utility Pants",
+      "price": 1590.0,
+      "stock": 42,
+      "price_source": "api",
+      "price_is_synthetic": false
+    },
+    {
+      "product_key": "std6730202734:static-runner",
+      "source_id": "std6730202734",
+      "source_product_id": "static-runner",
+      "is_mock": false,
+      "name": "Switch Move Runner",
+      "description": "Lightweight everyday runners for a fast city pace.",
+      "category": "Unisex Sneakers",
+      "price": 2190.0,
+      "stock": 14,
+      "price_source": "api",
+      "price_is_synthetic": false
+    },
+    {
+      "product_key": "demo-shop-b:B-001",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-001",
+      "is_mock": true,
+      "name": "Wireless Mouse",
+      "description": "Compact wireless mouse for study and office work.",
+      "category": "Accessories",
+      "price": 450.0,
+      "stock": 60,
+      "price_source": "api",
+      "price_is_synthetic": true
+    },
+    {
+      "product_key": "demo-shop-b:B-002",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-002",
+      "is_mock": true,
+      "name": "Mechanical Keyboard",
+      "description": "Mechanical keyboard with hot-swappable switches.",
+      "category": "Accessories",
+      "price": 1450.0,
+      "stock": 35,
+      "price_source": "api",
+      "price_is_synthetic": true
+    },
+    {
+      "product_key": "demo-shop-b:B-003",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-003",
+      "is_mock": true,
+      "name": "USB-C Hub",
+      "description": "Six-port USB-C hub for notebooks and tablets.",
+      "category": "Accessories",
+      "price": 990.0,
+      "stock": 28,
+      "price_source": "api",
+      "price_is_synthetic": true
+    },
+    {
+      "product_key": "demo-shop-b:B-004",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-004",
+      "is_mock": true,
+      "name": "Full HD Webcam",
+      "description": "1080p webcam with an integrated microphone.",
+      "category": "Camera",
+      "price": 2490.0,
+      "stock": 7,
+      "price_source": "api",
+      "price_is_synthetic": true
+    },
+    {
+      "product_key": "demo-shop-c:C-001",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-001",
+      "is_mock": true,
+      "name": "Study Notebook Set",
+      "description": "Set of ruled notebooks for class notes and planning.",
+      "category": "Stationery",
+      "price": 300.0,
+      "stock": 65,
+      "price_source": "api",
+      "price_is_synthetic": true
+    },
+    {
+      "product_key": "demo-shop-c:C-002",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-002",
+      "is_mock": true,
+      "name": "LED Desk Lamp",
+      "description": "Adjustable desk lamp with three brightness levels.",
+      "category": "Lighting",
+      "price": 590.0,
+      "stock": 55,
+      "price_source": "api",
+      "price_is_synthetic": true
+    },
+    {
+      "product_key": "demo-shop-c:C-003",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-003",
+      "is_mock": true,
+      "name": "Bluetooth Speaker",
+      "description": "Portable speaker with a twelve-hour battery.",
+      "category": "Audio",
+      "price": 1290.0,
+      "stock": 24,
+      "price_source": "api",
+      "price_is_synthetic": true
+    },
+    {
+      "product_key": "demo-shop-c:C-004",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-004",
+      "is_mock": true,
+      "name": "Ergonomic Office Chair",
+      "description": "Adjustable mesh chair with lumbar support.",
+      "category": "Furniture",
+      "price": 3290.0,
+      "stock": 5,
+      "price_source": "api",
+      "price_is_synthetic": true
+    }
+  ]
+}

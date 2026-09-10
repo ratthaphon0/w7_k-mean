@@ -1,0 +1,44 @@
+{
+  "source_id": "demo-shop-c",
+  "data_origin": "synthetic_classroom_demo",
+  "currency": "THB",
+  "description": "Synthetic study and home catalog served by a real cloud HTTP API for the W7 lesson.",
+  "products": [
+    {
+      "id": "C-001",
+      "name": "Study Notebook Set",
+      "description": "Set of ruled notebooks for class notes and planning.",
+      "category": "Stationery",
+      "price": 300,
+      "stock": 65,
+      "price_is_synthetic": true
+    },
+    {
+      "id": "C-002",
+      "name": "LED Desk Lamp",
+      "description": "Adjustable desk lamp with three brightness levels.",
+      "category": "Lighting",
+      "price": 590,
+      "stock": 55,
+      "price_is_synthetic": true
+    },
+    {
+      "id": "C-003",
+      "name": "Bluetooth Speaker",
+      "description": "Portable speaker with a twelve-hour battery.",
+      "category": "Audio",
+      "price": 1290,
+      "stock": 24,
+      "price_is_synthetic": true
+    },
+    {
+      "id": "C-004",
+      "name": "Ergonomic Office Chair",
+      "description": "Adjustable mesh chair with lumbar support.",
+      "category": "Furniture",
+      "price": 3290,
+      "stock": 5,
+      "price_is_synthetic": true
+    }
+  ]
+}

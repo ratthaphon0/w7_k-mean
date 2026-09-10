@@ -1,0 +1,13 @@
+cluster,source_role,source_id,product_id,name,price_thb,stock_units,price_source,price_is_synthetic,is_mock
+0,Simulated group B,demo-shop-b,B-001,Wireless Mouse,450.0,60,api,True,True
+0,Simulated group C,demo-shop-c,C-002,LED Desk Lamp,590.0,55,api,True,True
+0,Simulated group C,demo-shop-c,C-001,Study Notebook Set,300.0,65,api,True,True
+1,Simulated group B,demo-shop-b,B-004,Full HD Webcam,2490.0,7,api,True,True
+1,Simulated group C,demo-shop-c,C-004,Ergonomic Office Chair,3290.0,5,api,True,True
+1,TA,std6730202734,pixel-rush-hoodie,Pixel Rush Hoodie,1890.0,9,api,False,False
+1,TA,std6730202734,static-runner,Switch Move Runner,2190.0,14,api,False,False
+2,Simulated group B,demo-shop-b,B-002,Mechanical Keyboard,1450.0,35,api,True,True
+2,Simulated group B,demo-shop-b,B-003,USB-C Hub,990.0,28,api,True,True
+2,Simulated group C,demo-shop-c,C-003,Bluetooth Speaker,1290.0,24,api,True,True
+2,TA,std6730202734,acid-grid-tee,Acid Grid Tee,890.0,18,api,False,False
+2,TA,std6730202734,signal-cargo,Signal Cargo,1590.0,42,api,False,False

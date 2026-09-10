@@ -1,0 +1,44 @@
+{
+  "source_id": "demo-shop-b",
+  "data_origin": "synthetic_classroom_demo",
+  "currency": "THB",
+  "description": "Synthetic electronics catalog served by a real cloud HTTP API for the W7 lesson.",
+  "products": [
+    {
+      "id": "B-001",
+      "name": "Wireless Mouse",
+      "description": "Compact wireless mouse for study and office work.",
+      "category": "Accessories",
+      "price": 450,
+      "stock": 60,
+      "price_is_synthetic": true
+    },
+    {
+      "id": "B-002",
+      "name": "Mechanical Keyboard",
+      "description": "Mechanical keyboard with hot-swappable switches.",
+      "category": "Accessories",
+      "price": 1450,
+      "stock": 35,
+      "price_is_synthetic": true
+    },
+    {
+      "id": "B-003",
+      "name": "USB-C Hub",
+      "description": "Six-port USB-C hub for notebooks and tablets.",
+      "category": "Accessories",
+      "price": 990,
+      "stock": 28,
+      "price_is_synthetic": true
+    },
+    {
+      "id": "B-004",
+      "name": "Full HD Webcam",
+      "description": "1080p webcam with an integrated microphone.",
+      "category": "Camera",
+      "price": 2490,
+      "stock": 7,
+      "price_is_synthetic": true
+    }
+  ]
+}

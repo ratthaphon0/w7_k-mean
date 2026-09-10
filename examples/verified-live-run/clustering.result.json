@@ -1,0 +1,308 @@
+{
+  "run_id": "20260909T184721Z-73e562b8",
+  "mode": "LIVE",
+  "features": [
+    "price",
+    "stock"
+  ],
+  "matrix_shape": [
+    12,
+    2
+  ],
+  "matrix_preview": [
+    [
+      890.0,
+      18.0
+    ],
+    [
+      1890.0,
+      9.0
+    ],
+    [
+      1590.0,
+      42.0
+    ],
+    [
+      2190.0,
+      14.0
+    ],
+    [
+      450.0,
+      60.0
+    ],
+    [
+      1450.0,
+      35.0
+    ],
+    [
+      990.0,
+      28.0
+    ],
+    [
+      2490.0,
+      7.0
+    ],
+    [
+      300.0,
+      65.0
+    ],
+    [
+      590.0,
+      55.0
+    ],
+    [
+      1290.0,
+      24.0
+    ],
+    [
+      3290.0,
+      5.0
+    ]
+  ],
+  "parameters": {
+    "selected_k": 3,
+    "random_state": 42,
+    "n_init": 10,
+    "scaler": "StandardScaler"
+  },
+  "diagnostics": [
+    {
+      "k": 1,
+      "inertia": 24.0,
+      "silhouette": null,
+      "realized_clusters": 1
+    },
+    {
+      "k": 2,
+      "inertia": 8.956966792146039,
+      "silhouette": 0.4949863679603122,
+      "realized_clusters": 2
+    },
+    {
+      "k": 3,
+      "inertia": 3.0940875675692316,
+      "silhouette": 0.5872799305895321,
+      "realized_clusters": 3
+    },
+    {
+      "k": 4,
+      "inertia": 1.816890460640554,
+      "silhouette": 0.5401829492023388,
+      "realized_clusters": 4
+    },
+    {
+      "k": 5,
+      "inertia": 0.798547971719265,
+      "silhouette": 0.530668791836242,
+      "realized_clusters": 5
+    },
+    {
+      "k": 6,
+      "inertia": 0.5826054877817708,
+      "silhouette": 0.4443340670809635,
+      "realized_clusters": 6
+    }
+  ],
+  "selected": {
+    "k": 3,
+    "inertia": 3.0940875675692316,
+    "silhouette": 0.5872799305895321,
+    "cluster_sizes": {
+      "0": 3,
+      "1": 4,
+      "2": 5
+    }
+  },
+  "centroids_original_units": [
+    {
+      "cluster": 0,
+      "price_thb_per_unit": 446.66666666666686,
+      "stock_units": 60.0
+    },
+    {
+      "cluster": 1,
+      "price_thb_per_unit": 2465.0,
+      "stock_units": 8.750000000000004
+    },
+    {
+      "cluster": 2,
+      "price_thb_per_unit": 1242.0,
+      "stock_units": 29.4
+    }
+  ],
+  "products": [
+    {
+      "product_key": "std6730202734:acid-grid-tee",
+      "source_id": "std6730202734",
+      "source_product_id": "acid-grid-tee",
+      "is_mock": false,
+      "name": "Acid Grid Tee",
+      "description": "Acid-wash cotton tee with a relaxed streetwear fit.",
+      "category": "Oversized T-shirt",
+      "price": 890.0,
+      "stock": 18,
+      "price_source": "api",
+      "price_is_synthetic": false,
+      "cluster": 2
+    },
+    {
+      "product_key": "std6730202734:pixel-rush-hoodie",
+      "source_id": "std6730202734",
+      "source_product_id": "pixel-rush-hoodie",
+      "is_mock": false,
+      "name": "Pixel Rush Hoodie",
+      "description": "Warm heavyweight hoodie with an oversized silhouette.",
+      "category": "Heavyweight Hoodie",
+      "price": 1890.0,
+      "stock": 9,
+      "price_source": "api",
+      "price_is_synthetic": false,
+      "cluster": 1
+    },
+    {
+      "product_key": "std6730202734:signal-cargo",
+      "source_id": "std6730202734",
+      "source_product_id": "signal-cargo",
+      "is_mock": false,
+      "name": "Signal Cargo",
+      "description": "Multi-pocket cargo pants built for everyday movement.",
+      "category": "Utility Pants",
+      "price": 1590.0,
+      "stock": 42,
+      "price_source": "api",
+      "price_is_synthetic": false,
+      "cluster": 2
+    },
+    {
+      "product_key": "std6730202734:static-runner",
+      "source_id": "std6730202734",
+      "source_product_id": "static-runner",
+      "is_mock": false,
+      "name": "Switch Move Runner",
+      "description": "Lightweight everyday runners for a fast city pace.",
+      "category": "Unisex Sneakers",
+      "price": 2190.0,
+      "stock": 14,
+      "price_source": "api",
+      "price_is_synthetic": false,
+      "cluster": 1
+    },
+    {
+      "product_key": "demo-shop-b:B-001",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-001",
+      "is_mock": true,
+      "name": "Wireless Mouse",
+      "description": "Compact wireless mouse for study and office work.",
+      "category": "Accessories",
+      "price": 450.0,
+      "stock": 60,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 0
+    },
+    {
+      "product_key": "demo-shop-b:B-002",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-002",
+      "is_mock": true,
+      "name": "Mechanical Keyboard",
+      "description": "Mechanical keyboard with hot-swappable switches.",
+      "category": "Accessories",
+      "price": 1450.0,
+      "stock": 35,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 2
+    },
+    {
+      "product_key": "demo-shop-b:B-003",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-003",
+      "is_mock": true,
+      "name": "USB-C Hub",
+      "description": "Six-port USB-C hub for notebooks and tablets.",
+      "category": "Accessories",
+      "price": 990.0,
+      "stock": 28,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 2
+    },
+    {
+      "product_key": "demo-shop-b:B-004",
+      "source_id": "demo-shop-b",
+      "source_product_id": "B-004",
+      "is_mock": true,
+      "name": "Full HD Webcam",
+      "description": "1080p webcam with an integrated microphone.",
+      "category": "Camera",
+      "price": 2490.0,
+      "stock": 7,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 1
+    },
+    {
+      "product_key": "demo-shop-c:C-001",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-001",
+      "is_mock": true,
+      "name": "Study Notebook Set",
+      "description": "Set of ruled notebooks for class notes and planning.",
+      "category": "Stationery",
+      "price": 300.0,
+      "stock": 65,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 0
+    },
+    {
+      "product_key": "demo-shop-c:C-002",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-002",
+      "is_mock": true,
+      "name": "LED Desk Lamp",
+      "description": "Adjustable desk lamp with three brightness levels.",
+      "category": "Lighting",
+      "price": 590.0,
+      "stock": 55,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 0
+    },
+    {
+      "product_key": "demo-shop-c:C-003",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-003",
+      "is_mock": true,
+      "name": "Bluetooth Speaker",
+      "description": "Portable speaker with a twelve-hour battery.",
+      "category": "Audio",
+      "price": 1290.0,
+      "stock": 24,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 2
+    },
+    {
+      "product_key": "demo-shop-c:C-004",
+      "source_id": "demo-shop-c",
+      "source_product_id": "C-004",
+      "is_mock": true,
+      "name": "Ergonomic Office Chair",
+      "description": "Adjustable mesh chair with lumbar support.",
+      "category": "Furniture",
+      "price": 3290.0,
+      "stock": 5,
+      "price_source": "api",
+      "price_is_synthetic": true,
+      "cluster": 1
+    }
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "2.4.6",
+    "scikit_learn": "1.5.2"
+  }
+}

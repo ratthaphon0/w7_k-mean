@@ -1,0 +1,32 @@
+{
+  "mode": "live",
+  "strict_sources": true,
+  "timeout_seconds": 8,
+  "sources": [
+    {
+      "source_id": "std6730202734",
+      "role": "ta",
+      "url": "http://119.59.102.161:3067/api/products",
+      "adapter": "appashif_data_meta",
+      "is_mock": false
+    },
+    {
+      "source_id": "demo-shop-b",
+      "role": "simulated_group",
+      "url": "http://119.59.102.161:3120/api/products",
+      "adapter": "data_meta",
+      "is_mock": true
+    },
+    {
+      "source_id": "demo-shop-c",
+      "role": "simulated_group",
+      "url": "http://119.59.102.161:3121/api/products",
+      "adapter": "data_meta",
+      "is_mock": true
+    }
+  ],
+  "features": [
+    "price",
+    "stock"
+  ]
+}

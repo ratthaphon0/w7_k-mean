@@ -1,0 +1,29 @@
+[Unit]
+Description=W7 classroom product API (%i)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+EnvironmentFile=/etc/w7-product-apis/%i.env
+ExecStart=/usr/bin/python3 /opt/w7-product-apis/server.py --host 0.0.0.0 --port ${PORT} --data /opt/w7-product-apis/%i.json
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryMax=64M
+CPUQuota=15%
+TasksMax=32
+LimitNOFILE=128
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "W7 canonical product",
+  "type": "object",
+  "required": ["product_key", "source_id", "source_product_id", "is_mock", "name", "description", "category", "price", "stock"],
+  "properties": {
+    "product_key": {"type": "string"},
+    "source_id": {"type": "string"},
+    "source_product_id": {"type": "string"},
+    "is_mock": {"type": "boolean"},
+    "name": {"type": "string"},
+    "description": {"type": "string"},
+    "category": {"type": "string"},
+    "price": {"type": "number", "minimum": 0},
+    "stock": {"type": "integer", "minimum": 0},
+    "price_source": {"type": ["string", "null"]},
+    "price_is_synthetic": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

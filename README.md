@@ -1,0 +1,103 @@
+# W7: Three Cloud Product APIs → K-means
+
+ชุดนี้พร้อมใช้สาธิตจริง โดยดึงสินค้าจาก HTTP API บน cloud 3 แหล่ง แปลงสินค้าแต่ละรายการเป็นเวกเตอร์ `[price, stock]` แล้วใช้ scikit-learn K-means จัดกลุ่ม
+
+## Clone repository
+
+```sh
+git clone https://github.com/ratthaphon0/w7_k-mean.git
+cd w7_k-mean
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+## แหล่งข้อมูลที่ใช้
+
+| Source | Endpoint | ข้อมูล | สถานะ |
+|---|---|---|---|
+| `std6730202734` (TA) | `http://119.59.102.161:3067/api/products` | สินค้าเดิม 4 รายการ | API และข้อมูลเดิม |
+| `demo-shop-b` | `http://119.59.102.161:3120/api/products` | สินค้า electronics 4 รายการ | API จริงบน cloud; ข้อมูลจำลอง |
+| `demo-shop-c` | `http://119.59.102.161:3121/api/products` | สินค้า study/home 4 รายการ | API จริงบน cloud; ข้อมูลจำลอง |
+
+API ใหม่ทั้งสองมี `/health` และ `/api/products?page=1&limit=20`, ทำงานด้วย systemd และเริ่มอัตโนมัติหลัง reboot ทุก record ส่ง `price` และ `stock` จาก API โดยตรง จึงไม่ต้องใช้ไฟล์ราคาเสริม
+
+## รัน K-means สด
+
+เมื่อนำ ZIP ไปเครื่องอื่นและยังไม่ได้ติดตั้ง environment:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+```sh
+cd w7_k-mean
+./scripts/run_demo.sh --mode live --k 3
+```
+
+ไม่ต้อง `source .venv/bin/activate` เพราะ script ใช้ `.venv/bin/python` โดยตรง ผลจะอยู่ใน `outputs/<run_id>/`:
+
+- `report.html` รายงานพร้อมนำเสนอ
+- `price-stock-clusters.png` scatter พร้อม centroid
+- `k-diagnostics.png` inertia และ silhouette
+- `cluster-memberships.csv` สมาชิกแต่ละ cluster
+- `centroids.csv` centroid ในหน่วยบาทและจำนวนคงเหลือ
+- `collection.raw.json`, `collection.normalized.json`, `clustering.result.json` หลักฐานของ run
+
+ตัวอย่างผล live ที่ตรวจแล้วอยู่ใน `examples/verified-live-run/` ส่วน `outputs/` ใช้เก็บผลใหม่และไม่ถูก commit ขึ้น GitHub
+
+ผล live ที่ตรวจแล้ว:
+
+```text
+matrix = 12 x 2
+k = 3
+silhouette = 0.5873
+cluster sizes = 3 / 4 / 5
+```
+
+## ตรวจ endpoint ก่อนสอน
+
+```sh
+curl --fail 'http://119.59.102.161:3067/api/products?page=1&limit=20'
+curl --fail 'http://119.59.102.161:3120/api/products?page=1&limit=20'
+curl --fail 'http://119.59.102.161:3121/api/products?page=1&limit=20'
+```
+
+## Snapshot สำรอง
+
+ถ้าอินเทอร์เน็ตมีปัญหา ให้รันข้อมูลที่ capture จาก API ทั้งสามไว้แล้ว:
+
+```sh
+./scripts/run_demo.sh --mode snapshot --k 3
+```
+
+ต้องการ refresh snapshot เมื่อ API เปลี่ยน:
+
+```sh
+.venv/bin/python scripts/refresh_snapshot.py
+```
+
+## ทดสอบ
+
+```sh
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+## โครงสร้างสำคัญ
+
+```text
+cloud_api/                  source code, fixtures, systemd unit, deploy/rollback
+aggregator/                 HTTP adapters + validation + canonical normalization
+analysis/                   StandardScaler + KMeans + plots + report
+data/                       current allowlisted and normalized snapshots
+scripts/run_demo.sh         one-command live/snapshot pipeline
+slides/                     revised deck and speaker notes
+LIVE_DEMO_RUNBOOK_TH.md     ลำดับเปิดและคำพูดสำหรับ TA
+IMPLEMENTATION_HANDOFF.md   specification และ acceptance criteria
+```
+
+## ความหมายของ “API จริง”
+
+พอร์ต 3120/3121 เป็น process จริงบน VPS และถูกเรียกผ่านเครือข่ายจริง แต่ catalog ในสอง API นั้นสร้างเพื่อการสอนและมี `data_origin: "synthetic_classroom_demo"` กับ `price_is_synthetic: true` ต้องไม่เรียกว่าเป็นยอดขายหรือข้อมูลร้านจริง ส่วน `stock` คือจำนวนสินค้าคงเหลือ ไม่ใช่ยอดขายรายเดือน
+
+K-means เรียนรู้สมาชิกจากระยะห่างของเวกเตอร์หลัง `StandardScaler`; source, category และ product ID ใช้แสดง provenance เท่านั้น ไม่ได้ใช้เป็น feature และไม่มี SQL `GROUP BY` หรือ if/else กำหนด cluster

@@ -1,0 +1,140 @@
+{
+  "captured_at": "2026-09-09T18:25:49.361702+00:00",
+  "capture_method": "Direct HTTP GET to three cloud APIs; allowlisted product fields only",
+  "sources": [
+    {
+      "source_id": "std6730202734",
+      "role": "ta",
+      "observed_url": "http://119.59.102.161:3067/api/products",
+      "http_status": 200,
+      "adapter": "appashif_data_meta",
+      "data_origin": "ta_api",
+      "products": [
+        {
+          "id": "acid-grid-tee",
+          "name": "Acid Grid Tee",
+          "description": "Acid-wash cotton tee with a relaxed streetwear fit.",
+          "category": "Oversized T-shirt",
+          "price": 890,
+          "stock": 18
+        },
+        {
+          "id": "pixel-rush-hoodie",
+          "name": "Pixel Rush Hoodie",
+          "description": "Warm heavyweight hoodie with an oversized silhouette.",
+          "category": "Heavyweight Hoodie",
+          "price": 1890,
+          "stock": 9
+        },
+        {
+          "id": "signal-cargo",
+          "name": "Signal Cargo",
+          "description": "Multi-pocket cargo pants built for everyday movement.",
+          "category": "Utility Pants",
+          "price": 1590,
+          "stock": 42
+        },
+        {
+          "id": "static-runner",
+          "name": "Switch Move Runner",
+          "description": "Lightweight everyday runners for a fast city pace.",
+          "category": "Unisex Sneakers",
+          "price": 2190,
+          "stock": 14
+        }
+      ]
+    },
+    {
+      "source_id": "demo-shop-b",
+      "role": "simulated_group",
+      "observed_url": "http://119.59.102.161:3120/api/products",
+      "http_status": 200,
+      "adapter": "data_meta",
+      "data_origin": "synthetic_classroom_demo",
+      "products": [
+        {
+          "id": "B-001",
+          "name": "Wireless Mouse",
+          "description": "Compact wireless mouse for study and office work.",
+          "category": "Accessories",
+          "price": 450,
+          "stock": 60,
+          "price_is_synthetic": true
+        },
+        {
+          "id": "B-002",
+          "name": "Mechanical Keyboard",
+          "description": "Mechanical keyboard with hot-swappable switches.",
+          "category": "Accessories",
+          "price": 1450,
+          "stock": 35,
+          "price_is_synthetic": true
+        },
+        {
+          "id": "B-003",
+          "name": "USB-C Hub",
+          "description": "Six-port USB-C hub for notebooks and tablets.",
+          "category": "Accessories",
+          "price": 990,
+          "stock": 28,
+          "price_is_synthetic": true
+        },
+        {
+          "id": "B-004",
+          "name": "Full HD Webcam",
+          "description": "1080p webcam with an integrated microphone.",
+          "category": "Camera",
+          "price": 2490,
+          "stock": 7,
+          "price_is_synthetic": true
+        }
+      ]
+    },
+    {
+      "source_id": "demo-shop-c",
+      "role": "simulated_group",
+      "observed_url": "http://119.59.102.161:3121/api/products",
+      "http_status": 200,
+      "adapter": "data_meta",
+      "data_origin": "synthetic_classroom_demo",
+      "products": [
+        {
+          "id": "C-001",
+          "name": "Study Notebook Set",
+          "description": "Set of ruled notebooks for class notes and planning.",
+          "category": "Stationery",
+          "price": 300,
+          "stock": 65,
+          "price_is_synthetic": true
+        },
+        {
+          "id": "C-002",
+          "name": "LED Desk Lamp",
+          "description": "Adjustable desk lamp with three brightness levels.",
+          "category": "Lighting",
+          "price": 590,
+          "stock": 55,
+          "price_is_synthetic": true
+        },
+        {
+          "id": "C-003",
+          "name": "Bluetooth Speaker",
+          "description": "Portable speaker with a twelve-hour battery.",
+          "category": "Audio",
+          "price": 1290,
+          "stock": 24,
+          "price_is_synthetic": true
+        },
+        {
+          "id": "C-004",
+          "name": "Ergonomic Office Chair",
+          "description": "Adjustable mesh chair with lumbar support.",
+          "category": "Furniture",
+          "price": 3290,
+          "stock": 5,
+          "price_is_synthetic": true
+        }
+      ]
+    }
+  ]
+}
