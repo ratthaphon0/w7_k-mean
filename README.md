@@ -1,6 +1,6 @@
 # W7: Three Cloud Product APIs → K-means
 
-ชุดนี้พร้อมใช้สาธิตจริง โดยดึงสินค้าจาก HTTP API บน cloud 3 แหล่ง แปลงสินค้าแต่ละรายการเป็นเวกเตอร์ `[price, stock]` แล้วใช้ scikit-learn K-means จัดกลุ่ม
+ชุดนี้เป็นตัวอย่างที่เพื่อนสามารถ clone แล้วทำตามได้ทีละขั้น โดยดึงสินค้าจาก HTTP API บน cloud 3 แหล่ง แปลงสินค้าแต่ละรายการเป็นเวกเตอร์ `[price, stock]` แล้วใช้ scikit-learn K-means จัดกลุ่ม
 
 ## Clone repository
 
@@ -10,6 +10,8 @@ cd w7_k-mean
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
+
+อ่านลำดับตั้งแต่ clone, ตรวจ API, รัน live และเปิดผลลัพธ์ได้ที่ [FRIEND_STEP_BY_STEP_TH.md](FRIEND_STEP_BY_STEP_TH.md)
 
 ## แหล่งข้อมูลที่ใช้
 
@@ -55,7 +57,7 @@ silhouette = 0.5873
 cluster sizes = 3 / 4 / 5
 ```
 
-## ตรวจ endpoint ก่อนสอน
+## ตรวจ endpoints
 
 ```sh
 curl --fail 'http://119.59.102.161:3067/api/products?page=1&limit=20'
@@ -63,7 +65,7 @@ curl --fail 'http://119.59.102.161:3120/api/products?page=1&limit=20'
 curl --fail 'http://119.59.102.161:3121/api/products?page=1&limit=20'
 ```
 
-## Snapshot สำรอง
+## ใช้ Snapshot เมื่อ API เข้าไม่ได้
 
 ถ้าอินเทอร์เน็ตมีปัญหา ให้รันข้อมูลที่ capture จาก API ทั้งสามไว้แล้ว:
 
@@ -96,6 +98,6 @@ LIVE_DEMO_RUNBOOK_TH.md     ลำดับเปิดและคำพูด�
 IMPLEMENTATION_HANDOFF.md   specification และ acceptance criteria
 ```
 
-## ความหมายของ “API จริง”
+## การจัดกลุ่ม
 
 K-means เรียนรู้สมาชิกจากระยะห่างของเวกเตอร์หลัง `StandardScaler`; source, category และ product ID ใช้แสดง provenance เท่านั้น ไม่ได้ใช้เป็น feature และไม่มี SQL `GROUP BY` หรือ if/else กำหนด cluster
