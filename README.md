@@ -57,14 +57,6 @@ silhouette = 0.5873
 cluster sizes = 3 / 4 / 5
 ```
 
-## ตรวจ endpoints
-
-```sh
-curl --fail 'http://119.59.102.161:3067/api/products?page=1&limit=20'
-curl --fail 'http://119.59.102.161:3120/api/products?page=1&limit=20'
-curl --fail 'http://119.59.102.161:3121/api/products?page=1&limit=20'
-```
-
 ## ใช้ Snapshot เมื่อ API เข้าไม่ได้
 
 ถ้าอินเทอร์เน็ตมีปัญหา ให้รันข้อมูลที่ capture จาก API ทั้งสามไว้แล้ว:
